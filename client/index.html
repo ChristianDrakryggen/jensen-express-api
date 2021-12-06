@@ -7,6 +7,13 @@
     <title>Post stuff app</title>
 </head>
 <body>
+    <form onsubmit="newPost(); return false;" >
+        <h2>Add new post</h2>
+        <input id="post-title" placeholder="Title" required>
+        <input id="post-content" placeholder="Content" required>
+        <button type="submit">Add</button>
+    </form>
+    <p id="response-message"></p>
     <div id="posts"></div>
     <script src="./app.js"></script>
 </body>
