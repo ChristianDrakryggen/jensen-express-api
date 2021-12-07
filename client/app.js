@@ -36,10 +36,14 @@ const getPosts = async () => {
 
 //new post
 const newPost = async () => {
+  const firstname = document.querySelector("#post-firstname").value;
+  const email = document.querySelector("#post-email").value;
   const title = document.querySelector("#post-title").value;
   const content = document.querySelector("#post-content").value;
 
   const post = {
+    firstname,
+    email,
     title,
     content,
   };

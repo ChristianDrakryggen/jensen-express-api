@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
+const { postAddedEmail } = require("../services/EmailService");
 
 router.post("/newpost", (req, res) => {
   console.log(req.body);
   const newPost = new Post({
+    firstname: req.body.firstname,
+    email: req.body.email,
     title: req.body.title,
     content: req.body.content,
   });
@@ -18,6 +21,7 @@ router.post("/newpost", (req, res) => {
         },
       });
     } else {
+      postAddedEmail(req.body);
       res.status(201).json({
         message: { msgBody: "Post successfully created", msgError: false },
       });
