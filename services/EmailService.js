@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
 const nodemailerSendgrid = require("nodemailer-sendgrid");
+require("dotenv").config();
 
 //Can be used in any custom email function we want to send different types of email
 const transport = nodemailer.createTransport(
   nodemailerSendgrid({
-    apiKey:
-      "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",
+    apiKey: process.env.SENDGRID_KEY,
   })
 );
 
@@ -13,7 +13,7 @@ const transport = nodemailer.createTransport(
 const postAddedEmail = (post) => {
   transport
     .sendMail({
-      from: "Christian <christianjohannesson@live.se>",
+      from: "Christian <cbl.johannesson@gmail.com>",
       to: `${post.firstname} <${post.email}>`,
       subject: "Message receieved",
       text: `Hi ${post.firstname}, your message (${post.title}) has been receieved`,

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const router = require("./api/API");
 const path = require("path");
+require("dotenv").config();
 
 app.use(cors());
 
@@ -14,7 +15,7 @@ app.use("/api", router);
 app.use(express.static(path.join(__dirname, "client")));
 
 mongoose.connect(
-  "mongodb+srv://christianDrakryggenJensen:i7fc2WP02HtIHHFu@my-first-api-db.3kdti.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" /*"mongodb://localhost:27017/posts-db"*/,
+  process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: true },
   () => console.log("Connected to db")
 );
@@ -23,6 +24,6 @@ mongoose.connect(
   res.send("Hello");
 });*/
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
