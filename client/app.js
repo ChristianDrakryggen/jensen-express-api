@@ -1,5 +1,5 @@
 //api root
-const rootURL = "http://localhost:5000/api/";
+const rootURL = "/api/";
 
 let posts = [];
 
